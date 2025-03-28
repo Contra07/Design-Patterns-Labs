@@ -10,15 +10,26 @@ public class Main
     public static void main(String[] args) throws FileNotFoundException, IOException, CloneNotSupportedException, DuplicateModelNameException, NoSuchModelNameException 
     {
         System.out.println("-------------- Задание 1 ----------------------");
-        var properties = ConfigurationProperties.loadProperties(".\\src\\main\\resources\\config.properties");
-        properties = ConfigurationProperties.getProperties();
-        properties = ConfigurationProperties.loadProperties(".\\src\\main\\resources\\config.properties");
-        properties = ConfigurationProperties.getProperties();
-        PropertiesTools.printProperties(properties);
+        // var properties = ConfigurationProperties.loadProperties(".\\src\\main\\resources\\config.properties");
+        // properties = ConfigurationProperties.getProperties();
+        // properties = ConfigurationProperties.loadProperties(".\\src\\main\\resources\\config.properties");
+        // properties = ConfigurationProperties.getProperties();
+        // PropertiesTools.printProperties(properties);
+        var configuration = ConfigurationProperties2.getConfiguration(".\\src\\main\\resources\\config.properties");
+        System.out.println("Конфигурация: ");
+        PropertiesTools.printProperties(configuration.getProperties());
+        System.out.println();
+        configuration = ConfigurationProperties2.getConfiguration();
+        configuration = ConfigurationProperties2.getConfiguration(".\\src\\main\\resources\\config2.properties");
+        configuration = ConfigurationProperties2.getConfiguration();
+        configuration = ConfigurationProperties2.getConfiguration();
+        System.out.println("Конфигурация: ");
+        PropertiesTools.printProperties(configuration.getProperties());
+        System.out.println();
         System.out.println("-----------------------------------------------");
         System.out.println();
         System.out.println("-------------- Задание 2 ----------------------");
-        var transportProperties = ConfigurationProperties.loadProperties(".\\src\\main\\resources\\config.properties");
+        var transportProperties = ConfigurationProperties2.getConfiguration().getProperties();
         
         System.out.println("Стандартная фабрика");
         var defaultFactory = TransportVehicleUtils.getTransportFactory();
