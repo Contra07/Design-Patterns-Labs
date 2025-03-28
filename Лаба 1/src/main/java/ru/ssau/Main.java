@@ -64,8 +64,11 @@ public class Main
         var originalTransport = transport1;
         System.out.println("Будем клонировать этот объект: ");
         TransportVehicleUtils.printModelsAndPrices(originalTransport);
+        System.out.println();
 
         var clonedTransport = originalTransport.clone();
+        
+        System.out.println("Замена имён моделей");
         for (var model : clonedTransport.getModelNames()) {
             clonedTransport.setModelNameByModelName(model, model + " клонированная");
         }
@@ -77,6 +80,7 @@ public class Main
         System.out.println();
         System.out.println("Клонированный: ");
         TransportVehicleUtils.printModelsAndPrices(clonedTransport);
+        System.out.println();
 
         System.out.println("-----------------------------------------------");
     }
