@@ -15,4 +15,5 @@ public interface TransportVehicle extends Serializable, Cloneable{
     void setPriceByName (String name, double price) throws NoSuchModelNameException;
     void addModel(String name, double price) throws DuplicateModelNameException;
     void deleteModel(String name) throws NoSuchModelNameException;
+    TransportVehicle clone() throws CloneNotSupportedException;
 }

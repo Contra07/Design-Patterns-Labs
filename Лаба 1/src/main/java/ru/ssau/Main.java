@@ -3,10 +3,11 @@ package ru.ssau;
 import java.io.*;
 import ru.ssau.properties.*;
 import ru.ssau.transport.*;
+import ru.ssau.transport.exception.*;
 
 public class Main 
 {
-    public static void main(String[] args) throws FileNotFoundException, IOException 
+    public static void main(String[] args) throws FileNotFoundException, IOException, CloneNotSupportedException, DuplicateModelNameException, NoSuchModelNameException 
     {
         System.out.println("-------------- Задание 1 ----------------------");
         var properties = ConfigurationProperties.loadProperties(".\\src\\main\\resources\\config.properties");
@@ -49,6 +50,22 @@ public class Main
         System.out.println("-----------------------------------------------");
         System.out.println();
         System.out.println("-------------- Задание 3 ----------------------");
+        var originalTransport = transport1;
+        System.out.println("Будем клонировать этот объект: ");
+        TransportVehicleUtils.printModelsAndPrices(originalTransport);
+
+        var clonedTransport = originalTransport.clone();
+        for (var model : clonedTransport.getModelNames()) {
+            clonedTransport.setModelNameByModelName(model, model + " клонированная");
+        }
+        
+        System.out.println();
+        System.out.println("Оригинал ");
+        TransportVehicleUtils.printModelsAndPrices(originalTransport);
+
+        System.out.println();
+        System.out.println("Клонированный: ");
+        TransportVehicleUtils.printModelsAndPrices(clonedTransport);
 
         System.out.println("-----------------------------------------------");
     }

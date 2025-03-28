@@ -305,7 +305,7 @@ public class Auto implements TransportVehicle
     }
     
     @Override
-    protected Object clone() throws CloneNotSupportedException
+    public TransportVehicle clone() throws CloneNotSupportedException
     {
        Auto result = (Auto)super.clone();
        result.models = models.clone();

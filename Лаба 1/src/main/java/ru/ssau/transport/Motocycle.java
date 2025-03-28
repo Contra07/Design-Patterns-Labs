@@ -337,7 +337,7 @@ public class Motocycle implements TransportVehicle
     }
     
     @Override
-    protected Object clone() throws CloneNotSupportedException
+    public TransportVehicle clone() throws CloneNotSupportedException
     {
        Motocycle result = (Motocycle)super.clone();
        result.head = (Model)head.clone();  
