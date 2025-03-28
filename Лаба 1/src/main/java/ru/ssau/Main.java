@@ -1,7 +1,55 @@
 package ru.ssau;
 
-public class Main {
-    public static void main(String[] args) {
-        System.out.println("Hello world!");
+import java.io.*;
+import ru.ssau.properties.*;
+import ru.ssau.transport.*;
+
+public class Main 
+{
+    public static void main(String[] args) throws FileNotFoundException, IOException 
+    {
+        System.out.println("-------------- Задание 1 ----------------------");
+        var properties = ConfigurationProperties.loadProperties(".\\src\\main\\resources\\config.properties");
+        properties = ConfigurationProperties.getProperties();
+        properties = ConfigurationProperties.loadProperties(".\\src\\main\\resources\\config.properties");
+        properties = ConfigurationProperties.getProperties();
+        PropertiesTools.printProperties(properties);
+        System.out.println("-----------------------------------------------");
+        System.out.println();
+        System.out.println("-------------- Задание 2 ----------------------");
+        var transportProperties = ConfigurationProperties.loadProperties(".\\src\\main\\resources\\config.properties");
+        
+        System.out.println("Стандартная фабрика");
+        var defaultFactory = TransportVehicleUtils.getTransportFactory();
+        var motocycleFactory = new MotocycleFactory();
+
+        var transport1 = TransportVehicleUtils.createInstance(
+            transportProperties.get("transport1.brand").toString(),
+            Integer.parseInt(transportProperties.get("transport1.modelsNumber").toString())
+        );
+        TransportVehicleUtils.printModelsAndPrices(transport1);
+        System.out.println();
+
+        System.out.println("Устанавливаем фабрику мотоциклов");
+        TransportVehicleUtils.setTransportFactory(motocycleFactory);
+        var transport2 = TransportVehicleUtils.createInstance(
+            transportProperties.get("transport2.brand").toString(),
+            Integer.parseInt(transportProperties.get("transport2.modelsNumber").toString())
+        );
+        TransportVehicleUtils.printModelsAndPrices(transport2);
+        System.out.println();
+
+        System.out.println("Возвращаем стандартную фабрику");
+        TransportVehicleUtils.setTransportFactory(defaultFactory);
+        var transport3 = TransportVehicleUtils.createInstance(
+            transportProperties.get("transport3.brand").toString(),
+            Integer.parseInt(transportProperties.get("transport3.modelsNumber").toString())
+        );
+        TransportVehicleUtils.printModelsAndPrices(transport3);
+        System.out.println("-----------------------------------------------");
+        System.out.println();
+        System.out.println("-------------- Задание 3 ----------------------");
+
+        System.out.println("-----------------------------------------------");
     }
 }
