@@ -148,7 +148,7 @@ public class Motocycle implements TransportVehicle
         }
         else
         {
-            model.setName(name);
+            model.setName(newName);
         }
     }
 

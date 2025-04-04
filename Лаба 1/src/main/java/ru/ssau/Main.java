@@ -39,6 +39,7 @@ public class Main
             transportProperties.get("transport1.brand").toString(),
             Integer.parseInt(transportProperties.get("transport1.modelsNumber").toString())
         );
+        System.out.println(transport1.getClass().getName());
         TransportVehicleUtils.printModelsAndPrices(transport1);
         System.out.println();
 
@@ -48,6 +49,8 @@ public class Main
             transportProperties.get("transport2.brand").toString(),
             Integer.parseInt(transportProperties.get("transport2.modelsNumber").toString())
         );
+        System.out.println(transport2.getClass().getName());
+
         TransportVehicleUtils.printModelsAndPrices(transport2);
         System.out.println();
 
@@ -57,11 +60,13 @@ public class Main
             transportProperties.get("transport3.brand").toString(),
             Integer.parseInt(transportProperties.get("transport3.modelsNumber").toString())
         );
+        System.out.println(transport3.getClass().getName());
+
         TransportVehicleUtils.printModelsAndPrices(transport3);
         System.out.println("-----------------------------------------------");
         System.out.println();
         System.out.println("-------------- Задание 3 ----------------------");
-        var originalTransport = transport1;
+        var originalTransport = transport2;
         System.out.println("Будем клонировать этот объект: ");
         TransportVehicleUtils.printModelsAndPrices(originalTransport);
         System.out.println();
